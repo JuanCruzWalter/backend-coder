@@ -39,6 +39,24 @@ class Contenedor {
     getAll() {
         return this.data
     }
+
+    async editByID(id, campo, valor) {
+        try{
+            let productos = await this.getAll();
+            let producto = productos.filter(producto => producto.id === id);
+            producto[campo] = valor;
+            const index = productos.findIndex(producto => producto.id === id);
+
+            productos = productos.splice(index, 1, producto)
+            productosParsed = JSON.parse(productos)
+            await fs.promises.writeFile(this.archivo, productosParsed)
+        }
+        catch (error){
+            console.log(error)
+
+        }
+    }
+
     deleteByID(id) {
         const idx = this.data.findIndex(p => p.id == id)
         this.data.splice(idx, 1)
