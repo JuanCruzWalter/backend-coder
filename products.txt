@@ -1,1 +1,4 @@
-{"id":"","title":"","price":"","img":""}
+[
+    {"id":"1","title":"remera","price":"$1500","img":""},
+    {"id":"2","title":"pantalon","price":"$1950","img":""}
+]
